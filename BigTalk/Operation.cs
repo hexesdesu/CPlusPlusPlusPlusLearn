@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BigTalk
 {
-    class Operation
+    public class Operation
     {
         private double _numberA = 0;
         private double _numberB = 0;
