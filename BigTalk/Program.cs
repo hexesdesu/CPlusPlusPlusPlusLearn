@@ -8,17 +8,12 @@ namespace BigTalk
         {
             try
             {
-                Console.Write("A:");
-                string strNumberA = Console.ReadLine();
-                Console.Write("+-*/");
-                string strOperate = Console.ReadLine();
-                Console.Write("B:");
-                string strNumberB = Console.ReadLine();
-                string strResult = "";
-                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA),
-                    Convert.ToDouble(strNumberB), strOperate));
-                Console.WriteLine("Result:" + strResult);
-                Console.ReadLine();
+                Operation oper;
+                oper = OperationFactory.CreateOperate("+");
+                oper.NumberA = 1;
+                oper.NumberB = 2;
+                double result = oper.GetResult();
+                
             }
             catch (Exception ex)
             {

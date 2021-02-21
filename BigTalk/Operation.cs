@@ -6,25 +6,82 @@ namespace BigTalk
 {
     class Operation
     {
-        public static double GetResult(double numberA, double numberB, string operate)
+        private double _numberA = 0;
+        private double _numberB = 0;
+
+        public double NumberA
         {
-            double result = 0d;
-            switch (operate )
+            get;
+            set;
+        }
+        public double NumberB
+        {
+            get;
+            set;
+        }
+        public virtual double GetResult()
+        {
+            double result = 0;
+            return result;
+        }
+    }
+    class OperationAdd:Operation
+    {
+        public override double GetResult()
+        {
+            double result = 0;
+            result = NumberA + NumberB;
+             return result;
+        }
+    }
+    class OperationSub : Operation
+    {
+        public override double GetResult()
+        {
+            double result = 0;
+            result = NumberA - NumberB;
+             return result;
+        }
+    }
+    class OperationMul : Operation
+    {
+        public override double GetResult()
+        {
+            double result = 0;
+            result = NumberA * NumberB;
+             return result;
+        }
+    }
+    class OperationDiv : Operation
+    {
+        public override double GetResult()
+        {
+            double result = 0;
+            result = NumberA / NumberB;
+             return result;
+        }
+    }
+    public class OperationFactory
+    {
+        public static Operation createOperate(string operate)
+        {
+            Operation oper = null;
+            switch (operate)
             {
                 case "+":
-                    result = numberA + numberB;
+                    oper = new OperationAdd();
                     break;
                 case "-":
-                    result = numberA - numberB;
+                    oper = new OperationSub();
                     break;
                 case "*":
-                    result = numberA * numberB;
+                    oper = new OperationMul();
                     break;
                 case "/":
-                    result = numberA / numberB;
+                    oper = new OperationDiv();
                     break;
             }
-            return result;
+            return oper;
         }
     }
 }
