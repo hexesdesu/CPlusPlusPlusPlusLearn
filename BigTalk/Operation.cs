@@ -85,3 +85,46 @@ namespace BigTalk
         }
     }
 }
+/*
+## 尝试markdown画uml图
+@startuml
+运算类 <.. 简单工厂类
+
+together {
+    class 加法类
+    class 减法类
+    class 乘法类
+    class 除法类
+}
+运算类 <|-- 加法类
+运算类 <|-- 减法类
+运算类 <|-- 乘法类
+运算类 <|-- 除法类
+
+class 运算类{
+    +NumberA: double
+    +numberB: double
+    +GetResult(): double
+}
+
+class 简单工厂类{ 
+    +createOperate(): 运算类
+}
+
+class 加法类{
+    +GetResult(): double
+}
+
+class 减法类{
+    +GetResult(): double
+}
+
+class 乘法类{
+    +GetResult(): double
+}
+
+class 除法类{
+    +GetResult(): double
+}
+@enduml
+**/
