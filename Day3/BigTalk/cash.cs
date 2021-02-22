@@ -4,66 +4,46 @@ using System.Text;
 
 namespace BigTalk
 {
-    abstract class CashSuper
+    abstract class Strategy
     {
-        public abstract double acceptCash(double money);
+        public abstract void AlgorithmInterface();
     }
-    class CashNormal : CashSuper
+        
+    class ConcreteStrategyA : Strategy
     {
-        public override double acceptCash(double money)
+        public override void AlgorithmInterface()
         {
-            return money;
-        }
-    }
-    class CashRebate : CashSuper
-    {
-        private double moneyRebate = 1d;
-        public CashRebate (string moneyRebate)
-        {
-            this.moneyRebate = double.Parse(moneyRebate);
-        }
-        public override double acceptCash(double money)
-        {
-            return money * moneyRebate;
+            Console.WriteLine("算法A");
         }
     }
-    class CashReturn:CashSuper
+
+    class ConcreteStrategyB : Strategy
     {
-        private double moneyCondition = 0.0d;
-        private double moneyReturn = 0.0d;
-        public CashReturn(string moneyCondition, string moneyReturn)
+        public override void AlgorithmInterface()
         {
-            this.moneyCondition = double.Parse(moneyCondition);
-            this.moneyReturn = double.Parse(moneyReturn);
-        }
-        public override double acceptCash(double money)
-        {
-            double result = money;
-            if (money >= moneyCondition)
-                result = money - Math.Floor(money / moneyCondition) * moneyReturn;
-            return money;
+            Console.WriteLine("算法B");
         }
     }
-    class CashFactory
+
+    class ConcreteStrategyC : Strategy
     {
-        public static CashSuper createCashAccept(string type)
+        public override void AlgorithmInterface()
         {
-            CashSuper cs = null;
-            switch (type)
-            {
-                case "正常收费":
-                    cs = new CashNormal();
-                    break;
-                case "满300返100":
-                    CashReturn cr1 = new CashReturn("300", "100");
-                    cs = cr1;
-                    break;
-                case "打八折":
-                    CashRebate cr2 = new CashRebate("0.8");
-                    cs = cr2;
-                    break;
-            }
-            return cs;
+            Console.WriteLine("算法C");
+        }
+    }
+
+    class Context
+    {
+        Strategy strategy;
+        public Context(Strategy strategy)
+        {
+            this.strategy = strategy;
+        }
+
+        public void ContextInterface()
+        {
+            strategy.AlgorithmInterface();
         }
     }
 }
