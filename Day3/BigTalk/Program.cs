@@ -6,17 +6,13 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Context context;
-            context = new Context(new ConcreteStrategyA());
-            context.ContextInterface();
+            ConcreteComponent c = new ConcreteComponent();
+            ConcreteDecoratorA d1 = new ConcreteDecoratorA();
+            ConcreteDecoratorB d2 = new ConcreteDecoratorB();
 
-            context = new Context(new ConcreteStrategyB());
-            context.ContextInterface();
-
-            context = new Context(new ConcreteStrategyC());
-            context.ContextInterface();
-
-            Console.Read();
+            d1.SetComponent(c);
+            d2.SetComponent(d1);
+            d2.Operation();
         }
     }
 }
