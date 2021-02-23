@@ -6,7 +6,8 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Proxy proxy = new Proxy();
+            proxy.Request();
         }
     }
 }
