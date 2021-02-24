@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigTalk
 {
+    //原型模式 浅复制
     class Resume: ICloneable
     {
         private string name;
