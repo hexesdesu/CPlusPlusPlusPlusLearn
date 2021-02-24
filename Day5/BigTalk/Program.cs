@@ -39,10 +39,11 @@ namespace BigTalk
             a.SetWorkExperience("1998-2000", "XX公司");
 
             Resume b = (Resume)a.Clone();
-            b.SetWorkExperience("1998-2006", "YY公司");
+            b.SetWorkExperience("1998-2006", "YY企业");
 
             Resume c = (Resume)a.Clone();
             c.SetPersonalInfo("男", "24");
+            c.SetWorkExperience("1998-2003", "ZZ企业");
 
             a.Display();
             b.Display();
