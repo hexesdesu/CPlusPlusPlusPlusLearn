@@ -6,17 +6,22 @@ namespace BigTalk
 {
     class Secretary
     {
-        private IList<StockObserver> observers = new List<StockObserver>();
+        private IList<Observer> observers = new List<Observer>();
         private string action;
 
-        public void Attach(StockObserver observer)
+        public void Attach(Observer observer)
         {
             observers.Add(observer);
         }
 
+        public void Detach(Observer observer)
+        {
+            observers.Remove(observer);
+        }
+
         public void Notiry()
         {
-            foreach (StockObserver o in observers)
+            foreach (Observer o in observers)
                 o.Update();
         }
 
@@ -27,18 +32,38 @@ namespace BigTalk
         }
     }
 
-    class StockObserver
+    abstract class Observer
     {
-        private string name;
-        private Secretary sub;
-        public StockObserver(string name, Secretary sub)
+        protected string name;
+        protected Secretary sub;
+
+        public Observer(string name, Secretary sub)
         {
             this.name = name;
             this.sub = sub;
         }
-        public void Update()
+
+        public abstract void Update();
+    }
+
+    class StockObserver:Observer
+    {
+        public StockObserver (string name,Secretary sub) : base(name, sub) { }
+
+        public override void Update()
         {
-            Console.WriteLine("{0}{1}关闭股票行情，继续工作", sub.SecretaryAction, name);
+            Console.WriteLine("{0}{1}Close stock and back to work!", sub.SecretaryAction, name);
+        }
+
+    }
+
+    class NBAObserver:Observer
+    {
+        public NBAObserver(string name, Secretary sub) : base(name, sub) { }
+
+        public override void Update()
+        {
+            Console.WriteLine("{0}{1}Close NBA and back to work!", sub.SecretaryAction, name);
         }
     }
 }
