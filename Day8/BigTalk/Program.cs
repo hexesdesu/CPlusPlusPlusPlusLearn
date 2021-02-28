@@ -9,10 +9,12 @@ namespace BigTalk
             Boss huhansan = new Boss();
 
             StockObserver tongshi1 = new StockObserver("weiguancha", huhansan);
-            StockObserver tongshi2 = new StockObserver("yiguancha", huhansan);
+            NBAObserver tongshi2 = new NBAObserver("yiguancha", huhansan);
 
             huhansan.Attach(tongshi1);
             huhansan.Attach(tongshi2);
+
+            huhansan.Detach(tongshi1);
 
             huhansan.SubjectState = "I'm back!";
 

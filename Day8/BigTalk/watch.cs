@@ -28,7 +28,7 @@ namespace BigTalk
 
         public void Detach(Observer observer)
         {
-            observers.Add(observer);
+            observers.Remove(observer);
         }
 
         public void Notify()
@@ -59,7 +59,7 @@ namespace BigTalk
             observers.Remove(observer);
         }
 
-        public void Notiry()
+        public void Notify()
         {
             foreach (Observer o in observers)
                 o.Update();
