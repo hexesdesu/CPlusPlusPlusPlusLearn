@@ -4,22 +4,9 @@ using System.Text;
 
 namespace BigTalk
 {
-    interface Subject
-    {
-        void Attach(Observer observer);
-        void Detach(Observer obsever);
-        void Notify();
-        string SubjectState
-        {
-            get;
-            set;
-        }
-    }
-
-    class Boss : Subject
+    abstract class Subject
     {
         private IList<Observer> observers = new List<Observer>();
-        private string action;
 
         public void Attach(Observer observer)
         {
@@ -33,9 +20,21 @@ namespace BigTalk
 
         public void Notify()
         {
-            foreach (Observer o in observers)
+            foreach(Observer o in observers)
+            {
                 o.Update();
+            }
         }
+    }
+
+    abstract class Observer
+    {
+        public abstract void Update();
+    }
+
+    class ConcreteSubject : Subject
+    {
+        private string subjectState;
 
         public string SubjectState
         {
@@ -44,66 +43,28 @@ namespace BigTalk
         }
     }
 
-    class Secretary
+    class ConcreteObserver : Observer
     {
-        private IList<Observer> observers = new List<Observer>();
-        private string action;
+        private string name;
+        private string observerState;
+        private ConcreteSubject subject;
 
-        public void Attach(Observer observer)
+        public ConcreteObserver(ConcreteSubject subject, string name)
         {
-            observers.Add(observer);
-        }
-
-        public void Detach(Observer observer)
-        {
-            observers.Remove(observer);
-        }
-
-        public void Notify()
-        {
-            foreach (Observer o in observers)
-                o.Update();
-        }
-
-        public string SecretaryAction
-        {
-            get { return action; }
-            set { action = value; }
-        }
-    }
-
-    abstract class Observer
-    {
-        protected string name;
-        protected Subject sub;
-
-        public Observer(string name, Subject sub)
-        {
+            this.subject = subject;
             this.name = name;
-            this.sub = sub;
         }
-
-        public abstract void Update();
-    }
-
-    class StockObserver:Observer
-    {
-        public StockObserver (string name,Subject sub) : base(name, sub) { }
 
         public override void Update()
         {
-            Console.WriteLine("{0}{1}Close stock and back to work!", sub.SubjectState, name);
+            observerState = subject.SubjectState;
+            Console.WriteLine("Watcher {0}'s new state is {1}", name, observerState);
         }
 
-    }
-
-    class NBAObserver:Observer
-    {
-        public NBAObserver(string name, Subject sub) : base(name, sub) { }
-
-        public override void Update()
+        public ConcreteSubject Subject
         {
-            Console.WriteLine("{0}{1}Close NBA and back to work!", sub.SubjectState, name);
+            get;
+            set;
         }
     }
 }

@@ -6,19 +6,14 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Boss huhansan = new Boss();
+            ConcreteSubject s = new ConcreteSubject();
 
-            StockObserver tongshi1 = new StockObserver("weiguancha", huhansan);
-            NBAObserver tongshi2 = new NBAObserver("yiguancha", huhansan);
+            s.Attach(new ConcreteObserver(s, "X"));
+            s.Attach(new ConcreteObserver(s, "Y"));
+            s.Attach(new ConcreteObserver(s, "Z"));
 
-            huhansan.Attach(tongshi1);
-            huhansan.Attach(tongshi2);
-
-            huhansan.Detach(tongshi1);
-
-            huhansan.SubjectState = "I'm back!";
-
-            huhansan.Notify();
+            s.SubjectState = "ABC";
+            s.Notify();
 
             Console.Read();
         }
