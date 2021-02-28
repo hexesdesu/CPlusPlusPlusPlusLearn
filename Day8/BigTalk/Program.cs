@@ -6,17 +6,17 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Secretary tongzizhe = new Secretary();
+            Boss huhansan = new Boss();
 
-            StockObserver tongshi1 = new StockObserver("weiguancha", tongzizhe);
-            StockObserver tongshi2 = new StockObserver("yiguancha", tongzizhe);
+            StockObserver tongshi1 = new StockObserver("weiguancha", huhansan);
+            StockObserver tongshi2 = new StockObserver("yiguancha", huhansan);
 
-            tongzizhe.Attach(tongshi1);
-            tongzizhe.Attach(tongshi2);
+            huhansan.Attach(tongshi1);
+            huhansan.Attach(tongshi2);
 
-            tongzizhe.SecretaryAction = "Boss!";
+            huhansan.SubjectState = "I'm back!";
 
-            tongzizhe.Notiry();
+            huhansan.Notify();
 
             Console.Read();
         }

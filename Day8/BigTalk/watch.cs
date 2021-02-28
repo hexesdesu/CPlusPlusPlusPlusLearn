@@ -4,6 +4,46 @@ using System.Text;
 
 namespace BigTalk
 {
+    interface Subject
+    {
+        void Attach(Observer observer);
+        void Detach(Observer obsever);
+        void Notify();
+        string SubjectState
+        {
+            get;
+            set;
+        }
+    }
+
+    class Boss : Subject
+    {
+        private IList<Observer> observers = new List<Observer>();
+        private string action;
+
+        public void Attach(Observer observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Detach(Observer observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Notify()
+        {
+            foreach (Observer o in observers)
+                o.Update();
+        }
+
+        public string SubjectState
+        {
+            get;
+            set;
+        }
+    }
+
     class Secretary
     {
         private IList<Observer> observers = new List<Observer>();
@@ -35,9 +75,9 @@ namespace BigTalk
     abstract class Observer
     {
         protected string name;
-        protected Secretary sub;
+        protected Subject sub;
 
-        public Observer(string name, Secretary sub)
+        public Observer(string name, Subject sub)
         {
             this.name = name;
             this.sub = sub;
@@ -48,22 +88,22 @@ namespace BigTalk
 
     class StockObserver:Observer
     {
-        public StockObserver (string name,Secretary sub) : base(name, sub) { }
+        public StockObserver (string name,Subject sub) : base(name, sub) { }
 
         public override void Update()
         {
-            Console.WriteLine("{0}{1}Close stock and back to work!", sub.SecretaryAction, name);
+            Console.WriteLine("{0}{1}Close stock and back to work!", sub.SubjectState, name);
         }
 
     }
 
     class NBAObserver:Observer
     {
-        public NBAObserver(string name, Secretary sub) : base(name, sub) { }
+        public NBAObserver(string name, Subject sub) : base(name, sub) { }
 
         public override void Update()
         {
-            Console.WriteLine("{0}{1}Close NBA and back to work!", sub.SecretaryAction, name);
+            Console.WriteLine("{0}{1}Close NBA and back to work!", sub.SubjectState, name);
         }
     }
 }
