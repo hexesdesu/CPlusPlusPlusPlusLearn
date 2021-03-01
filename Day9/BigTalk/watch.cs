@@ -4,42 +4,43 @@ using System.Text;
 
 namespace BigTalk
 {
-    abstract class Subject
-    {
-        private IList<Observer> observers = new List<Observer>();
-        public void Attach(Observer observer) => observers.Add(observer);
-        public void Detach(Observer observer) => observers.Remove(observer);
-        public void Notify()
-        {
-            foreach (var o in observers)
-                o.Update();
-        }
-    }
-
-    abstract class Observer
-    {
-        public abstract void Update();
-    }
-
-    class ConcreteSubject : Subject
-    {
-        public string SubjectState { get; set; }
-    }
-
-    class ConcreteObserver : Observer
+    class GameObserver
     {
         private string name;
-        private string observerState;
-        public ConcreteSubject Subject { get; set; }
-        public ConcreteObserver(ConcreteSubject subject,string name)
+        private Subject sub;
+        public GameObserver(string name,Subject sub)
         {
-            Subject = subject;
             this.name = name;
+            this.sub = sub;
         }
-        public override void Update()
+        public void CloseGame() => Console.WriteLine($"{sub.SubjectState}{name}关闭游戏，继续写作业");
+    }
+    class NBAObserver
+    {
+        private string name;
+        private Subject sub;
+        public NBAObserver(string name,Subject sub)
         {
-            observerState = Subject.SubjectState;
-            Console.WriteLine($"Observer {name}'s new state is {observerState}");
+            this.name = name;
+            this.sub = sub;
         }
+        public void CloseNBA() => Console.WriteLine($"{sub.SubjectState}{name}关闭NBA视频，继续看书");
+    }
+
+    interface Subject
+    {
+        void Notify();
+        string SubjectState { get; set; }
+    }
+
+
+    delegate void EventHandler();
+
+    class Teacher : Subject
+    {
+        public event EventHandler Update;
+        private string action;
+        public string SubjectState { get; set; }
+        public void Notify() => Update();
     }
 }

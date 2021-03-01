@@ -6,15 +6,13 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            ConcreteSubject s = new ConcreteSubject();
-
-            s.Attach(new ConcreteObserver(s, "X"));
-            s.Attach(new ConcreteObserver(s, "Y"));
-            s.Attach(new ConcreteObserver(s, "Z"));
-
-            s.SubjectState = "ABC";
-
-            s.Notify();
+            Teacher math = new Teacher();
+            GameObserver a = new GameObserver("小明", math);
+            NBAObserver b = new NBAObserver("小杨", math);
+            math.Update += new EventHandler(a.CloseGame);
+            math.Update += new EventHandler(b.CloseNBA);
+            math.SubjectState = "数学老师来教室了！";
+            math.Notify();
 
             Console.Read();
         }
