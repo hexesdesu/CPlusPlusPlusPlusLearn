@@ -138,7 +138,7 @@ namespace BigTalk
     class DataAcess
     {
         private static readonly string AssemblyName = "AbstractFactoryModel";
-        private static readonly string db = ConfigurationManager.AppSettings("DB");
+        private static readonly string db = ConfigurationManager.AppSettings["DB"];
 
         public static IUser CreateUser()
         {
