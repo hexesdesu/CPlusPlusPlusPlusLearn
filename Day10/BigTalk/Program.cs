@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace BigTalk
 {
@@ -6,18 +7,7 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            User user = new User();
-            Department dept = new Department();
-
-            IUser iu = DataAcess.CreateUser();
-
-            iu.Insert(user);
-            iu.GetUser(1);
-
-            IDepartment id = DataAcess.CreateDepartment();
-            id.Insert(dept);
-            id.GetDepartment(1);
-
+            IUser result = (IUser)Assembly.Load("AbstractFactoryModel").CreateInstance("AbstractFactoryModel.SqlserverUser");
             Console.Read();
         }
     }

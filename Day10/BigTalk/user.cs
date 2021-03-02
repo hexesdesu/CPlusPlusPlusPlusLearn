@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
 namespace BigTalk
-{
+{ 
     class User
     {
         private int _id;
@@ -135,36 +136,18 @@ namespace BigTalk
 
     class DataAcess
     {
-        //private static readonly string db = "Sqlserver";
-        private static readonly string db = "Access";
+        private static readonly string AssemblyName = "AbstractFactoryModel";
+        private static readonly string db = "Sqlserver";
 
         public static IUser CreateUser()
         {
-            IUser result = null;
-            switch (db)
-            {
-                case "Sqlserver":
-                    result = new SqlserverUser();
-                    break;
-                case "Access":
-                    result = new AccessUser();
-                    break;
-            }
-            return result;
+            string className = AssemblyName + "." + db + "User";
+            return (IUser)Assembly.Load(AssemblyName).CreateInstance(className);
         }
         public static IDepartment CreateDepartment()
         {
-            IDepartment result = null;
-            switch (db)
-            {
-                case "Sqlserver":
-                    result = new SqlserverDepartment();
-                    break;
-                case "Access":
-                    result = new AccessDepartment();
-                    break;
-            }
-            return result;
+            string className = AssemblyName + "." + db + "Department";
+            return (IDepartment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
     }
 }
