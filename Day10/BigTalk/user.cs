@@ -26,6 +26,69 @@ namespace BigTalk
         User GetUser(int id);
     }
 
+    interface IDepartment
+    {
+        void Insert(Department department);
+        Department GetDepartment(int id);
+    }
+
+    class SqlserverDepartment : IDepartment
+    {
+        public void Insert (Department department)
+        {
+            Console.WriteLine("在SQLServer中给Department表增加一条记录");
+        }
+        public Department GetDepartment(int id)
+        {
+            Console.WriteLine("在SQLServer中根据ID得到Department表一条记录");
+                return null;
+        }
+    }
+
+    class AccessDepartment : IDepartment
+    {
+        public void Insert(Department department)
+        {
+            Console.WriteLine("在Access中给Department表增加一条记录");
+        }
+        public Department GetDepartment(int id)
+        {
+            Console.WriteLine("在Access中根据ID得到Department表一条记录");
+                return null;
+        }
+    }
+
+    interface IFactory
+    {
+        IUser CreateUser();
+        IDepartment CreateDepartment();
+    }
+
+    class SqlServerFactory:IFactory
+    {
+        public IUser CreateUser()
+        {
+            return new SqlserverUser();
+        }
+        public IDepartment CreateDepartment()
+        {
+            return new SqlserverDepartment();
+        }
+    }
+
+    class AccessFactory:IFactory
+    {
+        public IUser CreateUser()
+        {
+            return new AccessUser();
+        }
+
+        public IDepartment CreateDepartment()
+        {
+            return new AccessDepartment();
+        }
+    }
+
     class SqlserverUser:IUser
     {
         public void Insert(User user)
@@ -54,28 +117,7 @@ namespace BigTalk
         }
     }
 
-    interface IFactory
-    {
-        IUser CreateUser();
-    }
-
-    class SqlServerFactory : IFactory
-    {
-        public IUser CreateUser()
-        {
-            return new SqlserverUser();
-        }
-    }
-
-    class AccessFactory : IFactory
-    {
-        public IUser CreateUser()
-        {
-            return new AccessUser();
-        }
-    }
-
-    class DepartMent
+    class Department
     {
         private int _id;
         public int ID
