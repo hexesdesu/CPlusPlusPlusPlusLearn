@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using System.Configuration;
 
 namespace BigTalk
 { 
@@ -137,7 +138,7 @@ namespace BigTalk
     class DataAcess
     {
         private static readonly string AssemblyName = "AbstractFactoryModel";
-        private static readonly string db = "Sqlserver";
+        private static readonly string db = ConfigurationManager.AppSettings("DB");
 
         public static IUser CreateUser()
         {
