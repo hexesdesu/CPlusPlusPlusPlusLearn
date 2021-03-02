@@ -7,9 +7,10 @@ namespace BigTalk
         static void Main(string[] args)
         {
             User user = new User();
-            SqlserverUser su = new SqlserverUser();
-            su.Insert(user);
-            su.GetUser(1);
+            IFactory factory = new SqlServerFactory();
+            IUser iu = factory.CreateUser();
+            iu.Insert(user);
+            iu.GetUser(1);
 
             Console.Read();
         }
