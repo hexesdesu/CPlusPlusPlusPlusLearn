@@ -9,15 +9,12 @@ namespace BigTalk
             User user = new User();
             Department dept = new Department();
 
-            IFactory factory = new SqlServerFactory();
-            //IFactory factory = new AccessFactory();
-
-            IUser iu = factory.CreateUser();
+            IUser iu = DataAcess.CreateUser();
 
             iu.Insert(user);
             iu.GetUser(1);
 
-            IDepartment id = factory.CreateDepartment();
+            IDepartment id = DataAcess.CreateDepartment();
             id.Insert(dept);
             id.GetDepartment(1);
 
