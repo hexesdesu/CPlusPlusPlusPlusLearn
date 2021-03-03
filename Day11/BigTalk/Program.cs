@@ -6,12 +6,27 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Context c = new Context(new ConcreteStateA());
+            Work emergencyProjects = new Work();
+            emergencyProjects.Hour = 9;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 10;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 12;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 13;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 14;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 17;
 
-            c.Request();
-            c.Request();
-            c.Request();
-            c.Request();
+            emergencyProjects.TaskFinished = true;
+
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 19;
+            emergencyProjects.WriteProgram();
+            emergencyProjects.Hour = 22;
+            emergencyProjects.WriteProgram();
+
 
             Console.Read();
         }
