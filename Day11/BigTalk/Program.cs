@@ -4,64 +4,29 @@ namespace BigTalk
 {
     class Program
     {
-        static int Hour = 0;
-        static bool WrokFinished = false;
-        public static void WriteProgram()
-        {
-            if (Hour < 12)
-            {
-                Console.WriteLine("当前时间：{0}点 上午工作，精神百倍", Hour);
-            }
-            else if (Hour < 13)
-            {
-                Console.WriteLine("当前时间：{0}点 饿了，午饭；犯困，午休。", Hour);
-            }
-            else if (Hour < 17)
-            {
-                Console.WriteLine("当前时间：{0}点 下午状态还不错，继续努力", Hour);
-            }
-            else
-            {
-                if (WrokFinished)
-                {
-                    Console.WriteLine("当前时间：{0}点 下班回家了", Hour);
-                }
-                else
-                {
-                    if (Hour < 21)
-                    {
-                        Console.WriteLine("当前时间：{0}点 加班哦，疲累至极", Hour);
-                    }
-                    else
-                    {
-                        Console.WriteLine("当前时间：{0}点 不行了，睡着了。", Hour);
-                    }
-                }
-            }
-        }
         static void Main(string[] args)
         {
-            Hour = 9;
-            WriteProgram();
-            Hour = 10;
-            WriteProgram();
-            Hour = 12;
-            WriteProgram();
-            Hour = 13;
-            WriteProgram();
-            Hour = 14;
-            WriteProgram();
-            Hour = 17;
-            WriteProgram();
+            Work emergencyProject = new Work();
+            emergencyProject.Hour = 9;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 10;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 12;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 13;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 14;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 17;
+            emergencyProject.WriteProgram();
 
-            //WrokFinished = true;
-            WrokFinished = false;
+            emergencyProject.TaskFinished = false;
 
-            WriteProgram();
-            Hour = 19;
-            WriteProgram();
-            Hour = 22;
-            WriteProgram();
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 19;
+            emergencyProject.WriteProgram();
+            emergencyProject.Hour = 22;
+            emergencyProject.WriteProgram();
 
             Console.Read();
         }
