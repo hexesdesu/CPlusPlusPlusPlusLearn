@@ -6,24 +6,18 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            GameRole lixiaoyao = new GameRole();
+            Originator o = new Originator();
+            o.State = "On";
+            o.Show();
 
-            lixiaoyao.GetInitState();
-            lixiaoyao.StateDisplay();
+            Caretaker c = new Caretaker();
+            c.Memento = o.CreateMemento();
 
-            GameRole backup = new GameRole();
-            backup.Vitality = lixiaoyao.Vitality;
-            backup.Attack = lixiaoyao.Attack;
-            backup.Defense = lixiaoyao.Defense;
+            o.State = "Off";
+            o.Show();
 
-            lixiaoyao.Fight();
-            lixiaoyao.StateDisplay();
-
-            lixiaoyao.Vitality = backup.Vitality;
-            lixiaoyao.Attack = backup.Attack;
-            lixiaoyao.Defense = backup.Defense;
-
-            lixiaoyao.StateDisplay();
+            o.SetMemento(c.Memento);
+            o.Show();
 
             Console.Read();
         }
