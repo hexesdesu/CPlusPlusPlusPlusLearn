@@ -6,18 +6,29 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Originator o = new Originator();
-            o.State = "On";
-            o.Show();
+            Composite root = new Composite("root");
+            root.Add(new Leaf("Leaf A"));
+            root.Add(new Leaf("Leaf B"));
 
-            Caretaker c = new Caretaker();
-            c.Memento = o.CreateMemento();
+            Composite comp = new Composite("Composite X");
+            comp.Add(new Leaf("Leaf XA"));
+            comp.Add(new Leaf("Leaf XB"));
 
-            o.State = "Off";
-            o.Show();
+            root.Add(comp);
 
-            o.SetMemento(c.Memento);
-            o.Show();
+            Composite comp2 = new Composite("Composite XY");
+            comp2.Add(new Leaf("Leaf XYA"));
+            comp2.Add(new Leaf("Leaf XYB"));
+
+            comp.Add(comp2);
+
+            root.Add(new Leaf("Leaf C"));
+
+            Leaf leaf = new Leaf("Leaf D");
+            root.Add(leaf);
+            root.Remove(leaf);
+
+            root.Display(1);
 
             Console.Read();
         }
