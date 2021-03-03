@@ -6,18 +6,24 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            //Target target = new Adapter();
-            //target.Reqest();
+            GameRole lixiaoyao = new GameRole();
 
-            Player b = new Forwards("巴蒂尔");
-            b.Attack();
-            Player m = new Guards("麦克格雷迪");
-            m.Attack();
+            lixiaoyao.GetInitState();
+            lixiaoyao.StateDisplay();
 
-            Player ym = new Translator("姚明");
+            GameRole backup = new GameRole();
+            backup.Vitality = lixiaoyao.Vitality;
+            backup.Attack = lixiaoyao.Attack;
+            backup.Defense = lixiaoyao.Defense;
 
-            ym.Attack();
-            ym.Defense();
+            lixiaoyao.Fight();
+            lixiaoyao.StateDisplay();
+
+            lixiaoyao.Vitality = backup.Vitality;
+            lixiaoyao.Attack = backup.Attack;
+            lixiaoyao.Defense = backup.Defense;
+
+            lixiaoyao.StateDisplay();
 
             Console.Read();
         }
