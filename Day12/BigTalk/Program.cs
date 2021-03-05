@@ -22,9 +22,7 @@ namespace BigTalk
             Waiter girl = new Waiter();
 
             girl.SetOrder(bakeMuttonCommand1);
-            girl.Notify();
             girl.SetOrder(bakeMuttonCommand2);
-            girl.Notify();
             girl.SetOrder(bakeChickenWingCommad1);
             girl.Notify();
 

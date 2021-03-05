@@ -46,14 +46,30 @@ namespace BigTalk
 
     public class Waiter
     {
-        private Command command;
+        private IList<Command> orders = new List<Command>();
         public void SetOrder(Command command)
         {
-            this.command = command;
+            if (command.ToString() == "命令模式.BakeChickenWingCommand")
+            {
+                Console.WriteLine("服务员：鸡翅没有了，请点别的烧烤。");
+            }
+            else
+            {
+                orders.Add(command);
+                Console.WriteLine("增加订单：" + command.ToString() + "时间：" + DateTime.Now.ToString());
+            }
+        }
+        public void CancelOrder(Command command)
+        {
+            orders.Remove(command);
+            Console.WriteLine("取消订单：" + command.ToString() + "时间：" + DateTime.Now.ToString());
         }
         public void Notify()
         {
-            command.ExcuteCommmand();
+            foreach(Command cmd in orders)
+            {
+                cmd.ExcuteCommmand();
+            }
         }
     }
 }
