@@ -7,12 +7,16 @@ namespace BigTalk
     class Singleton
     {
         private static Singleton instance;
+        private static readonly object syncRoot = new object();
         private Singleton() { }
         public static Singleton GetInstance()
         {
-            if (instance == null)
-            {
-                instance = new Singleton();
+            lock (syncRoot)
+            { 
+                if (instance == null)
+                {
+                    instance = new Singleton();
+                }
             }
             return instance;
         }
