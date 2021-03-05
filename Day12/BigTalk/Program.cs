@@ -6,7 +6,7 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            HandsetBrand ab;
+            /*HandsetBrand ab;
             ab = new HandsetBrandN();
 
             ab.SetHandsetSoft(new HandsetGame());
@@ -21,7 +21,15 @@ namespace BigTalk
             ab.Run();
 
             ab.SetHandsetSoft(new HandsetAddressList());
-            ab.Run();
+            ab.Run();*/
+
+            Abstraction ab = new RefinedAbstraction();
+
+            ab.SetImplementor(new ConcreteImplementorA());
+            ab.Operation();
+
+            ab.SetImplementor(new ConcreteImplementorB());
+            ab.Operation();
 
             Console.Read();
         }
