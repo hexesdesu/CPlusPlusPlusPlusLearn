@@ -11,11 +11,14 @@ namespace BigTalk
         private Singleton() { }
         public static Singleton GetInstance()
         {
-            lock (syncRoot)
-            { 
-                if (instance == null)
+            if (instance == null)
+            {
+                lock (syncRoot)
                 {
-                    instance = new Singleton();
+                    if (instance == null)
+                    {
+                        instance = new Singleton();
+                    }
                 }
             }
             return instance;
