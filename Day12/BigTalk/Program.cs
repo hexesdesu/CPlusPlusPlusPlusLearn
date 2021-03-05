@@ -6,13 +6,22 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Singleton s1 = Singleton.GetInstance();
-            Singleton s2 = Singleton.GetInstance();
+            HandsetBrand ab;
+            ab = new HandsetBrandN();
 
-            if (s1 == s2)
-            {
-                Console.WriteLine("两个对象是相同的实例");
-            }
+            ab.SetHandsetSoft(new HandsetGame());
+            ab.Run();
+
+            ab.SetHandsetSoft(new HandsetAddressList());
+            ab.Run();
+
+            ab = new HandsetBrandM();
+
+            ab.SetHandsetSoft(new HandsetGame());
+            ab.Run();
+
+            ab.SetHandsetSoft(new HandsetAddressList());
+            ab.Run();
 
             Console.Read();
         }
