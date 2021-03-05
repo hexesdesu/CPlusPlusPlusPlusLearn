@@ -6,30 +6,14 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            /*HandsetBrand ab;
-            ab = new HandsetBrandN();
-
-            ab.SetHandsetSoft(new HandsetGame());
-            ab.Run();
-
-            ab.SetHandsetSoft(new HandsetAddressList());
-            ab.Run();
-
-            ab = new HandsetBrandM();
-
-            ab.SetHandsetSoft(new HandsetGame());
-            ab.Run();
-
-            ab.SetHandsetSoft(new HandsetAddressList());
-            ab.Run();*/
-
-            Abstraction ab = new RefinedAbstraction();
-
-            ab.SetImplementor(new ConcreteImplementorA());
-            ab.Operation();
-
-            ab.SetImplementor(new ConcreteImplementorB());
-            ab.Operation();
+            Barbecuer boy = new Barbecuer();
+            boy.BakeMutton();
+            boy.BakeMutton();
+            boy.BakeMutton();
+            boy.BakeChickenWing();
+            boy.BakeMutton();
+            boy.BakeMutton();
+            boy.BakeChickenWing();
 
             Console.Read();
         }
