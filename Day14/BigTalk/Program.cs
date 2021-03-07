@@ -6,27 +6,22 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            /*ConcreteMediator m = new ConcreteMediator();
+            int extrinsicstate = 22;
 
-            ConcreteColleague1 c1 = new ConcreteColleague1(m);
-            ConcreteColleague2 c2 = new ConcreteColleague2(m);
+            FlyweightFactory f = new FlyweightFactory();
 
-            m.Colleague1 = c1;
-            m.Colleague2 = c2;
+            Flyweight fx = f.GetFlyweight("X");
+            fx.Operation(--extrinsicstate);
 
-            c1.Send("吃了么？");
-            c2.Send("么得。");*/
+            Flyweight fy = f.GetFlyweight("Y");
+            fx.Operation(--extrinsicstate);
 
-            UnitedNationsSecurityCouncil UNSC = new UnitedNationsSecurityCouncil();
+            Flyweight fz = f.GetFlyweight("Z");
+            fx.Operation(--extrinsicstate);
 
-            USA c1 = new USA(UNSC);
-            Iraq c2 = new Iraq(UNSC);
+            Flyweight uf = new UnsharedConcreteFlyweight();
 
-            UNSC.Colleague1 = c1;
-            UNSC.Colleague2 = c2;
-
-            c1.Declare("不准研制核武器，否则要发动战争！");
-            c2.Declare("我们没有核武器，也不怕侵略。");
+            uf.Operation(--extrinsicstate);
 
             Console.Read();
         }
