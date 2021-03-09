@@ -42,14 +42,14 @@
       <FileName>website.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BigTalk.WebSite" Collapsed="true">
+  <Class Name="BigTalk.WebSite">
     <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>website.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BigTalk.ConcreteWebSite" Collapsed="true">
+  <Class Name="BigTalk.ConcreteWebSite">
     <Position X="0.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
