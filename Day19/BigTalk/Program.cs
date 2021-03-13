@@ -6,7 +6,7 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Operation o = new Add();
+            Operation o = OperationFactory.GetOperation("-");
             o.Num1 = 1;
             o.Num2 = 2;
             Console.WriteLine(o.GetResult());
@@ -38,6 +38,35 @@ namespace BigTalk
         public override double GetResult()
         {
             return this.Num1 + this.Num2;
+        }
+    }
+
+    public class Minus : Operation
+    {
+        public override double GetResult()
+        {
+            return this.Num1 - this.Num2;
+        }
+    }
+
+    public class OperationFactory
+    {
+        public static Operation GetOperation (string operation)
+        {
+            if ("+".Equals(operation))
+            {
+                return new Add();
+            }
+            else if ("-".Equals(operation))
+            {
+                return new Minus();
+            }
+            else
+            {
+                {
+                    return null;
+                }
+            }
         }
     }
 }
