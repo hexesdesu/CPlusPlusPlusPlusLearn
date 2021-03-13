@@ -6,10 +6,14 @@ namespace BigTalk
     {
         static void Main(string[] args)
         {
-            Operation o = OperationFactory.GetOperation("-");
-            o.Num1 = 1;
-            o.Num2 = 2;
-            Console.WriteLine(o.GetResult());
+            if ("+".Equals("+"))
+            {
+                IOperationFactory operationFactory = new AddFactory();
+                Operation o = operationFactory.GetOperation();
+                o.Num1 = 1;
+                o.Num2 = 2;
+                Console.WriteLine(o.GetResult());
+            }         
         }
     }
 
@@ -49,24 +53,24 @@ namespace BigTalk
         }
     }
 
-    public class OperationFactory
+    public interface IOperationFactory
     {
-        public static Operation GetOperation (string operation)
+        public Operation GetOperation();
+    }
+
+    public class AddFactory : IOperationFactory
+    {
+        public Operation GetOperation()
+        { 
+            return new Add();
+        }
+    }
+
+    public class MinusFactory : IOperationFactory
+    {
+        public Operation GetOperation()
         {
-            if ("+".Equals(operation))
-            {
-                return new Add();
-            }
-            else if ("-".Equals(operation))
-            {
-                return new Minus();
-            }
-            else
-            {
-                {
-                    return null;
-                }
-            }
+            return new Minus();
         }
     }
 }
