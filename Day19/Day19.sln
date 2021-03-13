@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigTalk", "BigTalk\BigTalk.csproj", "{4AF6B9B0-4696-4ABD-8B3D-79F91C9889A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AF6B9B0-4696-4ABD-8B3D-79F91C9889A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF6B9B0-4696-4ABD-8B3D-79F91C9889A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF6B9B0-4696-4ABD-8B3D-79F91C9889A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF6B9B0-4696-4ABD-8B3D-79F91C9889A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F956199-B8DC-4A95-9521-AF1FB4D0BC50}
+	EndGlobalSection
+EndGlobal
